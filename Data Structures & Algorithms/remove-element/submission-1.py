@@ -1,0 +1,22 @@
+class Solution:
+    def removeElement(self, nums: List[int], val: int) -> int:
+
+        if len(nums)==0: return 0
+        
+        pointer = len(nums)-1
+        i = 0
+        while nums[pointer] == val:
+            pointer -= 1
+            if pointer == -1: break
+
+        while i<pointer:
+
+            if nums[i] == val:
+                nums[i] = nums[pointer]
+                nums[pointer] = val
+                while nums[pointer] == val:
+                    pointer -= 1
+            i+=1
+        
+        if pointer == -1: return 0 
+        else: return len(nums[:pointer+1])  
